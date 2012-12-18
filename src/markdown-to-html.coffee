@@ -1,7 +1,3 @@
-subscribe = document.getElementById 'subscribe'
-subscribe.checked = true if subscribe
-
-
 # Keep track of our keys
 activeKeys = []
 ctrl       = 17
