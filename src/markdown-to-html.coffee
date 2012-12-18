@@ -11,6 +11,9 @@ converter = new showdown.converter()
 # Cache the document object
 $document = $ document
 
+# Toggle undoing conversion
+lastHTML = lastText = null
+
 # Bind key listeners
 $document.keydown ( event ) ->
 	key = event.keyCode
@@ -27,7 +30,13 @@ markdownify = ( event = null ) ->
 	event.preventDefault?()
 
 	$el = $ ':focus'
-	return if not $el.val()
+	value = $el.val()
+	return if not value
 
-	html = converter.makeHtml $el.val()
+	return $el.val lastText if value == lastHTML
+
+	lastText = value
+
+	html = converter.makeHtml value
+	lastHTML = html
 	$el.val html
