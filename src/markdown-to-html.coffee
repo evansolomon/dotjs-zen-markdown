@@ -27,7 +27,7 @@ $document.keyup ( event ) ->
 # Convert markdown to HTML
 markdownify = ( event = null ) ->
 	# Make sure this doesn't submit a form
-	event.preventDefault?()
+	event?.preventDefault?()
 
 	$el = $ ':focus'
 	value = $el.val()
